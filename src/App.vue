@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import cardSwiper from './components/cardSwiper.vue';
+import cardSwiper from './components/CardSwiper.vue';
 </script>
 
 <template>
