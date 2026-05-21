@@ -2,7 +2,8 @@
 import { items } from '../composables/useItems'
 
 import ItemCard from './ItemCard.vue'
-import AddItem from './AddItem.vue'
+
+import AddItem from './AddItem.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import AddItem from './AddItem.vue'
       :item="item"
     />
 
+    <AddItem />
+
   </div>
-  <AddItem />
 </template>
