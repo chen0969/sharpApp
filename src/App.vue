@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import cardSwiper from './components/cardSwiper.vue';
 </script>
 
 <template>
-  <HelloWorld />
+  <section class="mx-auto p-0">
+    <main class="min-h-screen bg-gray-50">
+      <cardSwiper />
+    </main>
+  </section>
 </template>
