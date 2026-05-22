@@ -1,11 +1,34 @@
-<script setup lang="ts">
-import cardSwiper from './components/CardSwiper.vue';
-</script>
-
 <template>
-  <section class="mx-auto p-0">
-    <main class="min-h-screen bg-gray-50">
-      <cardSwiper />
-    </main>
-  </section>
+
+  <div class="min-h-screen bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="
+        flex gap-3
+        p-4
+        border-b
+        bg-white
+      ">
+
+      <RouterLink to="/" class="
+          px-4 py-2 rounded-xl
+          bg-blue-500 text-white
+        ">
+        Swiper
+      </RouterLink>
+
+      <RouterLink to="/all" class="
+          px-4 py-2 rounded-xl
+          bg-gray-200
+        ">
+        All Cards
+      </RouterLink>
+
+    </nav>
+
+    <!-- Current Page -->
+    <RouterView />
+
+  </div>
+
 </template>

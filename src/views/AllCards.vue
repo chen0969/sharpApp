@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { items } from '../composables/useItems'
 
-import ItemCard from './ItemCard.vue'
-
-import AddItem from './AddItem.vue';
+import ItemCard from '../components/ItemCard.vue'
 </script>
 
 <template>
 
-  <div class="grid gap-5">
+  <div
+    class="
+      grid gap-5
+      md:grid-cols-2
+      lg:grid-cols-3
+      p-5
+    "
+  >
 
     <ItemCard
       v-for="item in items"
@@ -16,7 +21,6 @@ import AddItem from './AddItem.vue';
       :item="item"
     />
 
-    <AddItem />
-
   </div>
+
 </template>

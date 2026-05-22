@@ -19,10 +19,6 @@ const handleReset = () => {
     @click="handleReset"
     class="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 hover:text-red-600 transition-colors focus:outline-none"
   >
-    <!-- Simple Reset/Trash icon -->
-    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18" />
-    </svg>
-    Reset Storage
+    <i class="bi bi-bootstrap-reboot"></i>
   </button>
 </template>

@@ -36,32 +36,18 @@ function addItem() {
 
   <div class="space-y-4">
 
-    <input
-      v-model="name"
-      placeholder="Item name"
-      class="border p-3 rounded-xl w-full"
-    />
+    <input v-model="name" placeholder="Item name" class="border p-3 rounded-xl w-full" />
 
-    <select
-      v-model="status"
-      class="border p-3 rounded-xl w-full"
-    >
+    <select v-model="status" class="border p-3 rounded-xl w-full">
 
-      <option
-        v-for="(value, key) in STATUS_MAP"
-        :key="key"
-        :value="key"
-      >
+      <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
         {{ value.label }}
       </option>
 
     </select>
 
-    <button
-      @click="addItem"
-      class="bg-blue-500 text-white px-5 py-3 rounded-xl"
-    >
-      Add Item
+    <button @click="addItem" class="bg-blue-500 text-white px-5 py-3 rounded-xl">
+      <i class="bi bi-plus-circle"></i>
     </button>
 
   </div>
