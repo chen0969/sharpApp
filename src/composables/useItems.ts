@@ -35,7 +35,13 @@ watch(
 
 export function resetItems() {
 
-    items.value = structuredClone(defaultItems)
+  localStorage.removeItem(
+    STORAGE_KEY
+  )
+
+  items.value = structuredClone(
+    defaultItems
+  )
 
 }
 
@@ -74,5 +80,13 @@ export function updateItemStatus(
   if (!item) return
 
   item.status = status
+
+}
+
+export function addItem(
+  item: Item
+) {
+
+  items.value.push(item)
 
 }
