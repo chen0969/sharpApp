@@ -40,12 +40,6 @@ function saveChanges() {
 
 <template>
 
-  <!-- Overlay -->
-  <div
-    class="fixed inset-0 bg-black/40
-           flex items-center justify-center"
-  >
-
     <!-- Modal -->
     <div
       class="bg-white rounded-2xl p-6
@@ -99,7 +93,5 @@ function saveChanges() {
       </div>
 
     </div>
-
-  </div>
 
 </template>

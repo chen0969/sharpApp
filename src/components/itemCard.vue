@@ -10,8 +10,7 @@ defineProps<{
 
 <template>
 
-  <div
-    class="
+  <div class="
       rounded-3xl
       bg-white
       shadow-xl
@@ -20,33 +19,25 @@ defineProps<{
       space-y-5
       w-full
       max-w-md
-    "
-  >
+    " :class="STATUS_MAP[item.status].bgColor">
 
     <h2 class="text-3xl font-bold">
       {{ item.name }}
     </h2>
 
-    <span
-      class="
+    <span class="
         px-3 py-1 rounded-full text-sm
-      "
-      :class="STATUS_MAP[item.status].color"
-    >
+      " :class="STATUS_MAP[item.status].color">
       {{ STATUS_MAP[item.status].label }}
     </span>
 
     <div class="space-y-2">
 
-      <div
-        v-for="note in item.notes"
-        :key="note"
-        class="
+      <div v-for="note in item.notes" :key="note" class="
           bg-gray-100
           rounded-xl
           p-3
-        "
-      >
+        ">
         {{ note }}
       </div>
 
