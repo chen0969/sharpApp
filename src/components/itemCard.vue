@@ -24,8 +24,7 @@ const isEditing = ref(false)
 
   <div class="
       rounded-2xl
-      border
-      bg-white
+      border-2 border-gray-300
       shadow
       p-5
       space-y-4

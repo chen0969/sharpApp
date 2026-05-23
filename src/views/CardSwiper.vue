@@ -123,7 +123,7 @@ const cardStyle = computed(() => {
 <template>
 
   <div class="
-      h-screen
+      h-80
       flex
       items-center
       justify-center

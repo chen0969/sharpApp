@@ -1,3 +1,6 @@
+<script setup lang="ts">
+import logo from './assets/invencheck.svg'
+</script>
 <template>
 
   <div class="min-h-screen bg-gray-100">
@@ -28,6 +31,10 @@
 
     <!-- Current Page -->
     <RouterView />
+
+    <div class="flex justify-center mt-5 p-10 pb-2">
+      <img class="p-10 pb-2" :src="logo" alt="" />
+    </div>
 
   </div>
 
