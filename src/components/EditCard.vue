@@ -11,6 +11,11 @@ import {
   from '../data/statuses'
 
 import {
+  SECTION_MAP,
+  type SectionKey
+}  from '../data/sections'
+
+import {
   updateItem
 }
   from '../composables/useItems'
@@ -30,6 +35,10 @@ const editedName = ref(
 
 const editedStatus = ref<StatusKey>(
   props.item.status
+)
+
+const editedSection = ref<SectionKey>(
+  props.item.section
 )
 
 // IMPORTANT
@@ -65,6 +74,8 @@ function saveChanges() {
     name: editedName.value,
 
     status: editedStatus.value,
+
+    section: editedSection.value,
 
     notes: editableNotes.value,
 
@@ -107,6 +118,18 @@ function saveChanges() {
         ">
 
         <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
+          {{ value.label }}
+        </option>
+
+      </select>
+
+      <!-- SECTION -->
+      <select v-model="editedSection" class="
+          w-full border
+          rounded-xl p-3
+        ">
+
+        <option v-for="(value, key) in SECTION_MAP" :key="key" :value="key">
           {{ value.label }}
         </option>
 

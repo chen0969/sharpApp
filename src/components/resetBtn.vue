@@ -22,7 +22,7 @@ function handleReset() {
   <button @click="isConfirming = true" class="
       fixed bottom-6 left-6
 
-      w-16 h-16
+      w-10 h-10
       rounded-full
 
       bg-red-500
@@ -37,7 +37,7 @@ function handleReset() {
 
       transition
     ">
-    ↺
+    <i class="bi bi-arrow-clockwise"></i>
   </button>
 
   <!-- Confirm Modal -->

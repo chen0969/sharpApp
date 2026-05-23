@@ -56,7 +56,7 @@ const isEditing = ref(false)
             bg-blue-100
             text-blue-600
           ">
-          Edit
+          <i class="bi bi-pencil-square"></i>
         </button>
 
         <!-- Delete -->
@@ -66,7 +66,7 @@ const isEditing = ref(false)
             bg-red-100
             text-red-600
           ">
-          Delete
+          <i class="bi bi-trash3-fill"></i>
         </button>
 
       </div>
