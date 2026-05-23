@@ -2,14 +2,14 @@ export const STATUS_MAP = {
   undefined: {
     id: 1,
     label: 'Undefined',
-    color: 'bg-gray-200 text-gray-700',
+    color: 'bg-gray-100 text-gray-500',
     bgColor: 'bg-gray-500',
   },
 
   good: {
     id: 2,
     label: 'Good',
-    color: 'bg-green-200 text-green-700',
+    color: 'bg-green-500 text-green-700',
     bgColor: 'bg-green-500',
   },
 

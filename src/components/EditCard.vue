@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { STATUS_MAP } from '../data/statuses'
+import type { Item }
+  from '../initStore/itemsList'
 
-import type { Item } from '../initStore/itemsList'
+import {
+  STATUS_MAP,
+  type StatusKey
+}
+  from '../data/statuses'
 
-import type { StatusKey } from '../data/statuses'
-
-import { updateItem } from '../composables/useItems'
+import {
+  updateItem
+}
+  from '../composables/useItems'
 
 const props = defineProps<{
   item: Item
@@ -17,11 +23,38 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const editedName = ref(props.item.name)
+// Editable state
+const editedName = ref(
+  props.item.name
+)
 
 const editedStatus = ref<StatusKey>(
   props.item.status
 )
+
+// IMPORTANT
+const editableNotes = ref(
+  [...props.item.notes]
+)
+
+const newNote = ref('')
+
+function addNote() {
+
+  if (!newNote.value.trim()) return
+
+  editableNotes.value.push(
+    newNote.value
+  )
+
+  newNote.value = ''
+}
+
+function removeNote(index: number) {
+
+  editableNotes.value.splice(index, 1)
+
+}
 
 function saveChanges() {
 
@@ -32,6 +65,9 @@ function saveChanges() {
     name: editedName.value,
 
     status: editedStatus.value,
+
+    notes: editableNotes.value,
+
   })
 
   emit('close')
@@ -40,58 +76,117 @@ function saveChanges() {
 
 <template>
 
-    <!-- Modal -->
-    <div
-      class="bg-white rounded-2xl p-6
-             w-full max-w-md space-y-5"
-    >
+  <div class="
+      fixed inset-0
+      bg-black/40
+      flex items-center justify-center
+    ">
 
+    <div class="
+        bg-white
+        rounded-2xl
+        p-6
+        w-full max-w-lg
+        space-y-5
+      ">
+
+      <!-- TITLE -->
       <h2 class="text-2xl font-bold">
-        Edit Item
+        Edit <span class="text-red-500">{{ item.name }}</span>
       </h2>
+      <!-- NAME -->
+      <input v-model="editedName" class="
+          w-full border
+          rounded-xl p-3
+        " />
 
-      <!-- Name -->
-      <input
-        v-model="editedName"
-        class="w-full border rounded-xl p-3"
-      />
+      <!-- STATUS -->
+      <select v-model="editedStatus" class="
+          w-full border
+          rounded-xl p-3
+        ">
 
-      <!-- Status -->
-      <select
-        v-model="editedStatus"
-        class="w-full border rounded-xl p-3"
-      >
-
-        <option
-          v-for="(value, key) in STATUS_MAP"
-          :key="key"
-          :value="key"
-        >
+        <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
           {{ value.label }}
         </option>
 
       </select>
 
-      <!-- Buttons -->
+      <!-- NOTES -->
+      <div class="space-y-3">
+
+        <h3 class="font-bold text-lg">
+          Notes
+        </h3>
+
+        <!-- Existing Notes -->
+        <div v-for="(note, index) in editableNotes" :key="index" class="
+            flex gap-2
+            items-start
+          ">
+
+          <textarea v-model="editableNotes[index]" class="
+              flex-1
+              border rounded-xl
+              p-3
+            " />
+
+          <button @click="removeNote(index)" class="
+              px-3 py-2
+              rounded-xl
+              bg-red-100
+              text-red-600
+            ">
+            X
+          </button>
+
+        </div>
+
+        <!-- Add Note -->
+        <div class="flex gap-2">
+
+          <input v-model="newNote" placeholder="New note..." class="
+              flex-1
+              border rounded-xl
+              p-3
+            " />
+
+          <button @click="addNote" class="
+              px-4 py-2
+              rounded-xl
+              bg-blue-500
+              text-white
+            ">
+            Add
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ACTIONS -->
       <div class="flex justify-end gap-3">
 
-        <button
-          @click="emit('close')"
-          class="px-4 py-2 rounded-xl border"
-        >
+        <button @click="emit('close')" class="
+            px-4 py-2
+            rounded-xl border
+          ">
           Cancel
         </button>
 
-        <button
-          @click="saveChanges"
-          class="px-4 py-2 rounded-xl
-                 bg-blue-500 text-white"
-        >
+        <button @click="saveChanges" class="
+            px-4 py-2
+            rounded-xl
+            bg-blue-500
+            text-white
+          ">
           Save
         </button>
 
       </div>
 
     </div>
+
+  </div>
 
 </template>
