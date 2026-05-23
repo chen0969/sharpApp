@@ -1,15 +1,15 @@
 export const SECTION_MAP = {
 
-    uncategorized: {
+  uncategorized: {
     id: 0,
     label: 'Uncategorized',
     color: 'bg-gray-200 text-gray-700',
     bgColor: 'bg-gray-500',
   },
 
-  drink: {
+  Beverage: {
     id: 1,
-    label: 'Drink',
+    label: 'Beverage',
     color: 'bg-blue-200 text-blue-700',
     bgColor: 'bg-blue-500',
   },
@@ -31,6 +31,13 @@ export const SECTION_MAP = {
   catering: {
     id: 4,
     label: 'Catering',
+    color: 'bg-purple-200 text-purple-700',
+    bgColor: 'bg-purple-500',
+  },
+
+  special: {
+    id: 4,
+    label: 'Special',
     color: 'bg-purple-200 text-purple-700',
     bgColor: 'bg-purple-500',
   }
