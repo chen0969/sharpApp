@@ -8,6 +8,11 @@ import {
   from '../data/statuses'
 
 import {
+  SECTION_MAP,
+  type SectionKey
+}  from '../data/sections'
+
+import {
   addItem
 }
   from '../composables/useItems'
@@ -23,6 +28,8 @@ const status = ref<StatusKey>(
 )
 
 const notes = ref<string[]>([])
+
+const section = ref<SectionKey>('uncategorized')
 
 const newNote = ref('')
 
@@ -56,6 +63,8 @@ function createItem() {
     status: status.value,
 
     notes: notes.value,
+
+    section: section.value,
 
   })
 
@@ -101,6 +110,20 @@ function createItem() {
         ">
 
         <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
+          {{ value.label }}
+        </option>
+
+      </select>
+
+            <!-- SECTION -->
+      <select v-model="section" class="
+          w-full
+          border
+          rounded-xl
+          p-3
+        ">
+
+        <option v-for="(value, key) in SECTION_MAP" :key="key" :value="key">
           {{ value.label }}
         </option>
 

@@ -1,4 +1,12 @@
 export const SECTION_MAP = {
+
+    uncategorized: {
+    id: 0,
+    label: 'Uncategorized',
+    color: 'bg-gray-200 text-gray-700',
+    bgColor: 'bg-gray-500',
+  },
+
   drink: {
     id: 1,
     label: 'Drink',

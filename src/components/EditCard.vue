@@ -120,7 +120,7 @@ function saveChanges() {
         </h3>
 
         <!-- Existing Notes -->
-        <div v-for="(note, index) in editableNotes" :key="index" class="
+        <div v-for="(_, index) in editableNotes" :key="index" class="
             flex gap-2
             items-start
           ">

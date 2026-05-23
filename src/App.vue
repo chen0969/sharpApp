@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import logo from './assets/invencheck.svg'
 import AddCardBtn from './components/AddCardBtn.vue'
-import resetBtn from './components/resetBtn.vue'
+import ResetBtn from './components/ResetBtn.vue'
 </script>
 <template>
 
@@ -41,6 +41,6 @@ import resetBtn from './components/resetBtn.vue'
   </div>
 
   <AddCardBtn />
-  <resetBtn />
+  <ResetBtn />
 
 </template>

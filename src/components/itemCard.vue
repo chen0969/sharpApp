@@ -6,6 +6,9 @@ import type { Item } from '../initStore/itemsList'
 import { STATUS_MAP }
   from '../data/statuses'
 
+import { SECTION_MAP }
+  from '../data/sections'
+
 import {
   deleteItem
 } from '../composables/useItems'
@@ -41,6 +44,7 @@ const isEditing = ref(false)
 
         {{ item.name }}
 
+        <span class="p-2 text-xs">{{ SECTION_MAP[item.section].label }}</span>
       </h2>
 
       <div class="flex gap-2">
