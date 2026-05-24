@@ -28,9 +28,11 @@ const isEditing = ref(false)
   <div class="
       rounded-2xl
       border-2 border-gray-300
-      shadow
+      shadow-lg shadow-gray-200
       p-5
       space-y-4
+      h-70
+      w-full
     " :class="STATUS_MAP[item.status].bgColor">
 
     <!-- Header -->

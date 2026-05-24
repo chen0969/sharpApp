@@ -124,16 +124,18 @@ const cardStyle = computed(() => {
 
   <div class="
       h-80
+      p-5
       flex
       items-center
       justify-center
-      overflow-hidden
+      overflow-visible
       bg-gray-100
     ">
 
     <div v-if="currentItem" class="
         touch-none
         cursor-grab
+        w-full
       " :style="cardStyle" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="onPointerUp"
       @pointerleave="onPointerUp">
 

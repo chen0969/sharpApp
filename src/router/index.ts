@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory }
-from 'vue-router'
+  from 'vue-router'
 
 import AllCards from '../views/AllCards.vue'
 
 import CardSwiper from '../views/CardSwiper.vue'
+
+import Summary from '../views/Summary.vue'
 
 const router = createRouter({
 
@@ -13,6 +15,11 @@ const router = createRouter({
 
     {
       path: '/',
+      redirect: '/sharpApp',  
+    },
+
+    {
+      path: '/swiper',
       name: 'swiper',
       component: CardSwiper,
     },
@@ -22,6 +29,12 @@ const router = createRouter({
       name: 'all',
       component: AllCards,
     },
+
+    {
+      path: '/summary',
+      name: 'summary',
+      component: Summary,
+    }
 
   ],
 

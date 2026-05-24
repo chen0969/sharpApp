@@ -90,15 +90,17 @@ function saveChanges() {
   <div class="
       fixed inset-0
       bg-black/40
-      flex items-center justify-center
+      flex items-start justify-center
+      p-5
     ">
 
     <div class="
         bg-white
         rounded-2xl
-        p-6
-        w-full max-w-lg
+        p-3
         space-y-5
+        border-2 border-gray-300
+        shadow-lg
       ">
 
       <!-- TITLE -->

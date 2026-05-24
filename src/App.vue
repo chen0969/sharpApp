@@ -2,6 +2,7 @@
 import logo from './assets/invencheck.svg'
 import AddCardBtn from './components/AddCardBtn.vue'
 import ResetBtn from './components/ResetBtn.vue'
+import Time from './components/Time.vue'
 </script>
 <template>
 
@@ -9,13 +10,15 @@ import ResetBtn from './components/ResetBtn.vue'
 
     <!-- Navigation -->
     <nav class="
-        flex gap-3
-        p-4
-        border-b
+        flex gap-2
+        p-3
+        shadow-2xl shadow-gray-300
         bg-white
+        items-center
+        justify-between
       ">
 
-      <RouterLink to="/" class="
+      <RouterLink to="/swiper" class="
           px-4 py-2 rounded-xl
           bg-blue-500 text-white
         ">
@@ -26,13 +29,20 @@ import ResetBtn from './components/ResetBtn.vue'
           px-4 py-2 rounded-xl
           bg-gray-200
         ">
-        All Cards
+        All
       </RouterLink>
 
+      <RouterLink to="/summary" class="
+          px-4 py-2 rounded-xl
+          bg-gray-200
+        ">
+        Sum
+      </RouterLink>
+      <Time />
     </nav>
 
     <!-- Current Page -->
-    <RouterView />
+    <RouterView id="capture-area" />
 
     <div class="flex justify-center mt-5 p-10 pb-2">
       <img class="p-10 pb-2" :src="logo" alt="" />
@@ -42,5 +52,4 @@ import ResetBtn from './components/ResetBtn.vue'
 
   <AddCardBtn />
   <ResetBtn />
-
 </template>
