@@ -13,7 +13,7 @@ import {
 import {
   SECTION_MAP,
   type SectionKey
-}  from '../data/sections'
+} from '../data/sections'
 
 import {
   updateItem
@@ -97,26 +97,26 @@ function saveChanges() {
     <div class="
         bg-white
         rounded-2xl
-        p-3
-        space-y-5
+        p-2 text-xs
+        space-y-2
         border-2 border-gray-300
         shadow-lg
       ">
 
       <!-- TITLE -->
-      <h2 class="text-2xl font-bold">
+      <h2 class="text-lg font-bold">
         Edit <span class="text-red-500">{{ item.name }}</span>
       </h2>
       <!-- NAME -->
       <input v-model="editedName" class="
           w-full border
-          rounded-xl p-3
+          rounded-xl p-2
         " />
 
       <!-- STATUS -->
       <select v-model="editedStatus" class="
           w-full border
-          rounded-xl p-3
+          rounded-xl p-2
         ">
 
         <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
@@ -128,7 +128,7 @@ function saveChanges() {
       <!-- SECTION -->
       <select v-model="editedSection" class="
           w-full border
-          rounded-xl p-3
+          rounded-xl p-2
         ">
 
         <option v-for="(value, key) in SECTION_MAP" :key="key" :value="key">
@@ -153,7 +153,7 @@ function saveChanges() {
           <textarea v-model="editableNotes[index]" class="
               flex-1
               border rounded-xl
-              p-3
+              p-2
             " />
 
           <button @click="removeNote(index)" class="
@@ -162,7 +162,7 @@ function saveChanges() {
               bg-red-100
               text-red-600
             ">
-            X
+            <i class="bi bi-trash3"></i>
           </button>
 
         </div>
@@ -173,7 +173,7 @@ function saveChanges() {
           <input v-model="newNote" placeholder="New note..." class="
               flex-1
               border rounded-xl
-              p-3
+              p-2
             " />
 
           <button @click="addNote" class="
@@ -182,7 +182,7 @@ function saveChanges() {
               bg-blue-500
               text-white
             ">
-            Add
+            <i class="bi bi-plus-square"></i>
           </button>
 
         </div>
@@ -196,7 +196,7 @@ function saveChanges() {
             px-4 py-2
             rounded-xl border
           ">
-          Cancel
+          <i class="bi bi-x"></i>
         </button>
 
         <button @click="saveChanges" class="
@@ -205,7 +205,7 @@ function saveChanges() {
             bg-blue-500
             text-white
           ">
-          Save
+          <i class="bi bi-floppy"></i>
         </button>
 
       </div>

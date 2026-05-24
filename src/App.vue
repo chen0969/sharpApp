@@ -11,7 +11,7 @@ import Time from './components/Time.vue'
     <!-- Navigation -->
     <nav class="
         flex gap-2
-        p-3
+        p-3 text-xs
         shadow-2xl shadow-gray-300
         bg-white
         items-center
