@@ -159,86 +159,51 @@ const cardStyle = computed(() => {
 
 <template>
 
-  <div
-    class="
-      h-[32rem]
+  <div class="
       p-5
-
       flex
       items-center
       justify-center
-
       overflow-hidden
-
       bg-gray-100
-    "
-  >
+    ">
 
     <!-- CARD -->
-    <div
-
-      v-if="currentItem"
-
-      class="
+    <div v-if="currentItem" class="
         touch-none
         cursor-grab
-
         w-full
         max-w-xl
-      "
+      " :style="cardStyle" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="onPointerUp"
+      @pointerleave="onPointerUp">
 
-      :style="cardStyle"
-
-      @pointerdown="onPointerDown"
-
-      @pointermove="onPointerMove"
-
-      @pointerup="onPointerUp"
-
-      @pointerleave="onPointerUp"
-
-    >
-
-      <ItemCard
-        :item="currentItem"
-      />
+      <ItemCard :item="currentItem" />
 
     </div>
 
     <!-- EMPTY STATE -->
-    <div
-
-      v-else
-
-      class="
+    <div v-else class="
         text-center
         space-y-3
-      "
-    >
+      ">
 
-      <div
-        class="
+      <div class="
           text-4xl
-        "
-      >
+        ">
         🎉
       </div>
 
-      <h2
-        class="
+      <h2 class="
           text-3xl
           font-bold
           text-gray-500
-        "
-      >
+        ">
         No More Cards
       </h2>
 
-      <p
-        class="
+      <p class="
           text-gray-400
-        "
-      >
+        ">
         All undefined cards reviewed.
       </p>
 

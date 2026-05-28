@@ -6,6 +6,7 @@ import AllCards from '../views/AllCards.vue'
 import CardSwiper from '../views/CardSwiper.vue'
 
 import Summary from '../views/Summary.vue'
+import Timer from '../views/Timer.vue'
 
 const router = createRouter({
 
@@ -34,6 +35,12 @@ const router = createRouter({
       path: '/summary',
       name: 'summary',
       component: Summary,
+    },
+
+        {
+      path: '/timer',
+      name: 'timer',
+      component: Timer,
     }
 
   ],
