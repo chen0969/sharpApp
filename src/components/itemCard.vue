@@ -1,105 +1,207 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useElementHover } from '@vueuse/core'
 
 import type { Item } from '../initStore/itemsList'
 
-import { STATUS_MAP }
-  from '../data/statuses'
+import { STATUS_MAP } from '../data/statuses'
+import { SECTION_MAP } from '../data/sections'
 
-import { SECTION_MAP }
-  from '../data/sections'
+import { deleteItem } from '../composables/useItems'
+
+import EditItemModal from './EditCard.vue'
 
 import {
-  deleteItem
-} from '../composables/useItems'
-
-import EditItemModal
-  from '../components/EditCard.vue'
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuPortal,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from 'radix-vue'
 
 const props = defineProps<{
   item: Item
 }>()
 
 const isEditing = ref(false)
+
+const cardRef = ref<HTMLElement | null>(null)
+
+const isHovered = useElementHover(cardRef)
 </script>
 
 <template>
 
-  <div class="
-      rounded-2xl
-      border-2 border-gray-300
-      shadow-lg shadow-gray-200
+  <section class="flex justify-center items-center w-full h-full" >
+    <div ref="cardRef" class="
+      rounded-3xl
+      border
+      border-gray-500
       p-5
-      space-y-4
       h-70
-      w-full
-    " :class="STATUS_MAP[item.status].bgColor">
+      w-[90%]
+      transition-all
+      duration-100
+      shadow-md
+    " :class="[
+      STATUS_MAP[item.status].bgColor,
 
-    <!-- Header -->
-    <div class="
+      isHovered
+        ? 'shadow-xl -translate-y-1'
+        : ''
+    ]">
+
+      <!-- HEADER -->
+
+      <div class="
         flex
         justify-between
         items-start
+        mb-4
       ">
 
-      <h2 class="text-2xl font-bold">
+        <div>
 
-        {{ item.name }}
-
-        <span class="p-2 text-xs">{{ SECTION_MAP[item.section].label }}</span>
-      </h2>
-
-      <div class="flex gap-2">
-
-        <!-- Edit -->
-        <button @click="isEditing = true" class="
-            px-3 py-1
-            rounded-lg
-            bg-blue-100
-            text-blue-600
+          <h2 class="
+            text-2xl
+            font-bold
+            leading-tight
           ">
-          <i class="bi bi-pencil-square"></i>
-        </button>
+            {{ item.name }}
+          </h2>
 
-        <!-- Delete -->
-        <button @click="deleteItem(item.id)" class="
-            px-3 py-1
-            rounded-lg
-            bg-red-100
-            text-red-600
+          <div class="
+            text-xs
+            opacity-70
+            mt-1
           ">
-          <i class="bi bi-trash3-fill"></i>
-        </button>
+            {{ SECTION_MAP[item.section].label }}
+          </div>
+
+        </div>
+
+        <!-- RADIX MENU -->
+
+        <DropdownMenuRoot>
+
+          <DropdownMenuTrigger as-child>
+
+            <button class="
+              h-9
+              w-9
+              rounded-full
+              active:bg-black/10
+            ">
+              <i class="bi bi-three-dots"></i>
+            </button>
+
+          </DropdownMenuTrigger>
+
+          <DropdownMenuPortal>
+
+            <DropdownMenuContent class="
+              rounded-sm
+              bg-white
+              border
+              shadow-xl
+              p-1
+              z-50
+            ">
+
+              <DropdownMenuItem class="
+                px-3
+                py-2
+                rounded-lg
+
+                cursor-pointer
+
+                active:bg-gray-200
+              " @select="isEditing = true">
+
+                ✏️ Edit
+
+              </DropdownMenuItem>
+
+              <DropdownMenuItem class="
+                px-3
+                py-2
+                rounded-lg
+
+                cursor-pointer
+
+                text-red-600
+
+                active:bg-red-50
+              " @select="deleteItem(item.id)">
+
+                🗑 Delete
+
+              </DropdownMenuItem>
+
+            </DropdownMenuContent>
+
+          </DropdownMenuPortal>
+
+        </DropdownMenuRoot>
 
       </div>
 
-    </div>
+      <!-- STATUS -->
 
-    <!-- Status -->
-    <span class="
-        px-3 py-1
-        rounded-full
-        text-sm
-      " :class="STATUS_MAP[item.status].color">
-      {{ STATUS_MAP[item.status].label }}
-    </span>
+      <div class="mb-4">
 
-    <!-- Notes -->
-    <div class="space-y-2">
+        <span class="
+          px-3
+          py-1
 
-      <div v-for="note in item.notes" :key="note" class="
-          bg-gray-100
+          rounded-full
+
+          text-sm
+          font-medium
+        " :class="STATUS_MAP[item.status].color">
+          {{ STATUS_MAP[item.status].label }}
+        </span>
+
+      </div>
+
+      <!-- NOTES -->
+
+      <div class="
+        space-y-2
+
+        overflow-auto
+
+        max-h-32
+      ">
+
+        <div v-for="note in item.notes" :key="note" class="
+          bg-white/70
+
           rounded-xl
+
           p-3
+
+          text-sm
         ">
-        {{ note }}
+
+          {{ note }}
+
+        </div>
+
+        <div v-if="item.notes.length === 0" class="
+          text-sm
+          opacity-50
+          italic
+        ">
+          No notes
+        </div>
+
       </div>
 
     </div>
+  </section>
 
-  </div>
 
-  <!-- Modal -->
   <EditItemModal v-if="isEditing" :item="item" @close="isEditing = false" />
 
 </template>

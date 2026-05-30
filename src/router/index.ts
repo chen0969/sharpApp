@@ -10,7 +10,7 @@ import Timer from '../views/Timer.vue'
 
 const router = createRouter({
 
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
 

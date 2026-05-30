@@ -3,14 +3,26 @@ import { computed, ref } from 'vue'
 
 import ItemCard from '../components/ItemCard.vue'
 
-import { items } from '../composables/useItems'
-
-import {
-  updateItemStatus
-} from '../composables/useItems'
+import { items, updateItemStatus } from '../composables/useItems'
 
 // ======================
-// SWIPE STATE
+// CARD DATA
+// ======================
+
+const remainingItems = computed(() =>
+  items.value.filter(item => item.status === 'undefined')
+)
+
+const currentItem = computed(() =>
+  remainingItems.value[0]
+)
+
+const nextItem = computed(() =>
+  remainingItems.value[1]
+)
+
+// ======================
+// DRAG
 // ======================
 
 const dragX = ref(0)
@@ -19,35 +31,7 @@ const isDragging = ref(false)
 
 let startX = 0
 
-// ======================
-// DERIVED CARD STATE
-// ======================
-
-// Only cards that still need review
-const remainingItems = computed(() => {
-
-  return items.value.filter(
-
-    item => item.status === 'undefined'
-
-  )
-
-})
-
-// Current visible card
-const currentItem = computed(() => {
-
-  return remainingItems.value[0]
-
-})
-
-// ======================
-// POINTER EVENTS
-// ======================
-
-function onPointerDown(
-  event: PointerEvent
-) {
+function onPointerDown(event: PointerEvent) {
 
   isDragging.value = true
 
@@ -55,9 +39,7 @@ function onPointerDown(
 
 }
 
-function onPointerMove(
-  event: PointerEvent
-) {
+function onPointerMove(event: PointerEvent) {
 
   if (!isDragging.value) return
 
@@ -72,142 +54,381 @@ function onPointerUp() {
 
   const item = currentItem.value
 
-  if (!item) {
+  if (!item) return
 
-    dragX.value = 0
+  // GOOD
+
+  if (dragX.value > 120) {
+
+    swipeCard(
+      item.id,
+      'good',
+      1
+    )
 
     return
 
   }
 
-  // RIGHT SWIPE
-  if (dragX.value > 120) {
+  // EMPTY86
 
-    animateSwipe('good')
+  if (dragX.value < -120) {
 
-  }
+    swipeCard(
+      item.id,
+      'empty86',
+      -1
+    )
 
-  // LEFT SWIPE
-  else if (dragX.value < -120) {
-
-    animateSwipe('empty86')
-
-  }
-
-  // RESET
-  else {
-
-    dragX.value = 0
+    return
 
   }
+
+  dragX.value = 0
 
 }
 
 // ======================
-// SWIPE ACTION
+// SWIPE
 // ======================
 
-function animateSwipe(
-  newStatus: 'good' | 'empty86'
+function swipeCard(
+  id: string,
+  status: 'good' | 'empty86',
+  direction: 1 | -1
 ) {
 
-  const item = currentItem.value
+  // 不再用 1500
 
-  if (!item) return
-
-  const direction =
-    dragX.value > 0 ? 1 : -1
-
-  // Fly out animation
   dragX.value =
-    direction * 1200
+    direction * window.innerWidth * 0.8
 
   setTimeout(() => {
 
     updateItemStatus(
-      item.id,
-      newStatus
+      id,
+      status
     )
 
     dragX.value = 0
 
-  }, 250)
+  }, 220)
 
 }
+
+// ======================
+// PREVIEW LABELS
+// ======================
+
+const goodOpacity = computed(() => {
+
+  return Math.min(
+
+    Math.max(
+      dragX.value,
+      0
+    ) / 50,
+
+    1
+
+  )
+
+})
+
+const emptyOpacity = computed(() => {
+
+  return Math.min(
+
+    Math.max(
+      -dragX.value,
+      0
+    ) / 50,
+
+    1
+
+  )
+
+})
 
 // ======================
 // CARD STYLE
 // ======================
 
-const cardStyle = computed(() => {
+const cardStyle = computed(() => ({
 
-  return {
+  transform: `
+    translateX(${dragX.value}px)
+    rotate(${dragX.value * 0.08}deg)
+  `,
 
-    transform: `
-      translateX(${dragX.value}px)
-      rotate(${dragX.value * 0.05}deg)
-    `,
-
-    transition: isDragging.value
+  transition:
+    isDragging.value
       ? 'none'
-      : '0.25s ease',
+      : '0.25s ease'
+
+}))
+
+// ======================
+// BACKGROUND
+// ======================
+
+const backgroundStyle = computed(() => {
+
+  if (dragX.value > 0) {
+
+    return {
+
+      backgroundColor: `rgba(
+        34,
+        197,
+        94,
+        ${
+          Math.min(
+            dragX.value / 300,
+            0.25
+          )
+        }
+      )`
+
+    }
 
   }
+
+  if (dragX.value < 0) {
+
+    return {
+
+      backgroundColor: `rgba(
+        239,
+        68,
+        68,
+        ${
+          Math.min(
+            -dragX.value / 300,
+            0.25
+          )
+        }
+      )`
+
+    }
+
+  }
+
+  return {}
 
 })
 </script>
 
 <template>
 
-  <div class="
-      p-5
+  <div
+    class="
+      relative
+
+      h-full
+      w-full
+
       flex
       items-center
       justify-center
+
       overflow-hidden
-      bg-gray-100
-    ">
 
-    <!-- CARD -->
-    <div v-if="currentItem" class="
-        touch-none
-        cursor-grab
-        w-full
-        max-w-xl
-      " :style="cardStyle" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="onPointerUp"
-      @pointerleave="onPointerUp">
+      rounded-3xl
 
-      <ItemCard :item="currentItem" />
+      transition-colors
+      duration-200
+    "
+    :style="backgroundStyle"
+  >
 
-    </div>
+    <!-- EMPTY -->
 
-    <!-- EMPTY STATE -->
-    <div v-else class="
-        text-center
-        space-y-3
-      ">
+    <template v-if="!currentItem">
 
-      <div class="
-          text-4xl
-        ">
-        🎉
+      <div
+        class="
+          text-center
+          space-y-4
+        "
+      >
+
+        <div class="text-6xl">
+          🎉
+        </div>
+
+        <h2
+          class="
+            text-3xl
+            font-bold
+          "
+        >
+          No More Cards
+        </h2>
+
       </div>
 
-      <h2 class="
-          text-3xl
-          font-bold
-          text-gray-500
-        ">
-        No More Cards
-      </h2>
+    </template>
 
-      <p class="
-          text-gray-400
-        ">
-        All undefined cards reviewed.
-      </p>
+    <!-- CARD DECK -->
 
-    </div>
+    <template v-else>
+
+      <!-- NEXT CARD -->
+
+      <div
+
+        v-if="nextItem"
+
+        class="
+          absolute
+
+          left-1/2
+          -translate-x-1/2
+
+          scale-95
+
+          opacity-40
+
+          w-full
+          max-w-xl
+
+          pointer-events-none
+        "
+      >
+
+        <ItemCard
+          :item="nextItem"
+        />
+
+      </div>
+
+      <!-- CURRENT CARD -->
+
+      <div
+
+        class="
+          absolute
+
+          left-1/2
+          -translate-x-1/2
+
+          w-full
+          max-w-xl
+
+          touch-none
+
+          cursor-grab
+          active:cursor-grabbing
+
+          select-none
+        "
+
+        :style="cardStyle"
+
+        @pointerdown="onPointerDown"
+
+        @pointermove="onPointerMove"
+
+        @pointerup="onPointerUp"
+
+        @pointercancel="onPointerUp"
+
+        @pointerleave="onPointerUp"
+
+      >
+
+        <!-- GOOD -->
+
+        <div
+
+          class="
+            absolute
+
+            top-8
+            right-6
+
+            z-20
+
+            border-4
+            border-green-500
+
+            text-green-500
+
+            bg-white/80
+
+            px-5
+            py-2
+
+            rounded-xl
+
+            rotate-12
+
+            text-3xl
+            font-black
+
+            pointer-events-none
+          "
+
+          :style="{
+            opacity: goodOpacity
+          }"
+
+        >
+
+          GOOD
+
+        </div>
+
+        <!-- EMPTY -->
+
+        <div
+
+          class="
+            absolute
+
+            top-8
+            left-6
+
+            z-20
+
+            border-4
+            border-red-500
+
+            text-red-500
+
+            bg-white/80
+
+            px-5
+            py-2
+
+            rounded-xl
+
+            -rotate-12
+
+            text-3xl
+            font-black
+
+            pointer-events-none
+          "
+
+          :style="{
+            opacity: emptyOpacity
+          }"
+
+        >
+
+          EMPTY86
+
+        </div>
+
+        <ItemCard
+          :item="currentItem"
+        />
+
+      </div>
+
+    </template>
 
   </div>
 

@@ -6,72 +6,74 @@ import ResetBtn from './components/ResetBtn.vue'
 import Time from './components/Time.vue'
 </script>
 <template>
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <!-- Navigation -->
-    <nav class="
-        flex gap-2
-        p-3 text-xs
+  <div class="h-dvh flex flex-col overflow-hidden">
+    <header class="sticky top-0 z-50 bg-gray-100 shadow-md h-14">
+      <!-- Navigation -->
+      <nav class="
+        flex gap-1
+        p-1 text-[10px]
         shadow-2xl shadow-gray-300
         bg-white
         items-center
-        justify-between
+        justify-around
       ">
-      <RouterLink to="/" class="p-0">
-        <img class="w-10" :src="icon" alt="" />
-      </RouterLink>
+        <RouterLink to="/" class="p-0">
+          <img class="w-8" :src="icon" alt="" />
+        </RouterLink>
 
-      <RouterLink to="/swiper" class="
-          px-4 py-2 rounded-xl
+        <RouterLink to="/swiper" class="
+          p-2 rounded-lg
           bg-blue-500 text-white
         ">
-        Swiper
-      </RouterLink>
+          Swiper
+        </RouterLink>
 
-      <RouterLink to="/all" class="
-          px-4 py-2 rounded-xl
+        <RouterLink to="/all" class="
+          p-2 rounded-lg
           bg-gray-200
         ">
-        All
-      </RouterLink>
+          All
+        </RouterLink>
 
-      <RouterLink to="/summary" class="
-          px-4 py-2 rounded-xl
+        <RouterLink to="/summary" class="
+          p-2 rounded-lg
           bg-gray-200
         ">
-        Sum
-      </RouterLink>
+          Sum
+        </RouterLink>
 
-      <RouterLink to="/timer" class="
-          px-4 py-2 rounded-xl
+        <RouterLink to="/timer" class="
+          p-2 rounded-lg
           bg-gray-200
         ">
-        Timer
-      </RouterLink>
-    </nav>
-    <Time class="p-1 flex justify-center items-center" />
-  </header>
+          Timer
+        </RouterLink>
+      </nav>
+      <Time class="flex justify-center items-center text-[10px]" />
+    </header>
 
-  <div class="min-h-80 bg-gray-100">
-    <!-- Current Page -->
-    <RouterView id="capture-area" />
-  </div>
+    <main class="flex-1 overflow-y-auto bg-gray-100">
+      <!-- Current Page -->
+      <RouterView id="capture-area" />
+    </main>
 
-  <footer>
-    <div class="flex justify-center">
-      <img class="p-2 w-45" :src="logo" alt="" />
-    </div>
-    <div class="flex flex-col items-center gap-2">
-      <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg text-xs">
-        <a href="https://forms.gle/2DAQH7zTCBnj8REQ7" class="text-center text-gray-500 text-xs block mt-1">
-          Feedback
-        </a>
-      </button>
-      <p class="text-center text-gray-200 text-xs">
-        &copy; 2024 Invencheck. All rights reserved.
-      </p>
-    </div>
+    <footer class="bg-white shadow-md h-min text-[10px] p-1">
+      <div class="flex justify-center">
+        <img class="w-30" :src="logo" alt="" />
+      </div>
+      <div class="flex flex-col items-center">
+        <button class="bg-gray-200 text-gray-700 p-1 rounded-sm text-[10px]">
+          <a href="https://forms.gle/2DAQH7zTCBnj8REQ7">
+            Feedback
+          </a>
+        </button>
+        <p class="text-center text-gray-200 text-[10px]">
+          &copy; 2024 Invencheck. All rights reserved.
+        </p>
+      </div>
+    </footer>
     <AddCardBtn />
     <ResetBtn />
-  </footer>
+  </div>
 
 </template>

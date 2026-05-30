@@ -8,10 +8,11 @@ import ItemCard from '../components/ItemCard.vue'
 
   <div
     class="
-      grid gap-5
+      flex flex-col gap-5
       md:grid-cols-2
       lg:grid-cols-3
-      p-5
+      p-1
+      pt-3
     "
   >
 

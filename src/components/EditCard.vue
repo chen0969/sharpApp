@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+// import { useTextareaAutosize } from '@vueuse/core'
 
 import type { Item }
   from '../initStore/itemsList'
@@ -13,12 +14,31 @@ import {
 import {
   SECTION_MAP,
   type SectionKey
-} from '../data/sections'
+}
+  from '../data/sections'
 
 import {
   updateItem
 }
   from '../composables/useItems'
+
+import {
+  DialogRoot,
+  DialogPortal,
+  DialogOverlay,
+  DialogContent,
+  DialogTitle,
+
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectPortal,
+  SelectContent,
+  SelectViewport,
+  SelectItem,
+  SelectItemText
+}
+  from 'radix-vue'
 
 const props = defineProps<{
   item: Item
@@ -28,7 +48,8 @@ const emit = defineEmits<{
   close: []
 }>()
 
-// Editable state
+const open = ref(true)
+
 const editedName = ref(
   props.item.name
 )
@@ -41,27 +62,38 @@ const editedSection = ref<SectionKey>(
   props.item.section
 )
 
-// IMPORTANT
 const editableNotes = ref(
   [...props.item.notes]
 )
 
 const newNote = ref('')
 
+// VueUse
+// const {
+//   textarea
+// } = useTextareaAutosize()
+
 function addNote() {
 
-  if (!newNote.value.trim()) return
+  if (!newNote.value.trim())
+    return
 
   editableNotes.value.push(
     newNote.value
   )
 
   newNote.value = ''
+
 }
 
-function removeNote(index: number) {
+function removeNote(
+  index: number
+) {
 
-  editableNotes.value.splice(index, 1)
+  editableNotes.value.splice(
+    index,
+    1
+  )
 
 }
 
@@ -82,136 +114,290 @@ function saveChanges() {
   })
 
   emit('close')
+
 }
 </script>
 
 <template>
 
-  <div class="
-      fixed inset-0
-      bg-black/40
-      flex items-start justify-center
-      p-5
-    ">
+  <DialogRoot v-model:open="open" @update:open="emit('close')">
 
-    <div class="
-        bg-white
-        rounded-2xl
-        p-2 text-xs
-        space-y-2
-        border-2 border-gray-300
-        shadow-lg
-      ">
+    <DialogPortal>
 
-      <!-- TITLE -->
-      <h2 class="text-lg font-bold">
-        Edit <span class="text-red-500">{{ item.name }}</span>
-      </h2>
-      <!-- NAME -->
-      <input v-model="editedName" class="
-          w-full border
-          rounded-xl p-2
+      <!-- Overlay -->
+
+      <DialogOverlay class="
+          fixed inset-0
+          bg-black/40
+          backdrop-blur-sm
+          z-40
         " />
 
-      <!-- STATUS -->
-      <select v-model="editedStatus" class="
-          w-full border
-          rounded-xl p-2
+      <!-- Content -->
+
+      <DialogContent class="
+          fixed
+          left-1/2
+          top-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          z-50
+          w-[90%]
+          max-w-xl
+          bg-white
+          rounded-lg
+          p-3
+          shadow-sm
+          space-y-1
+          border
+          border-gray-400
         ">
 
-        <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
-          {{ value.label }}
-        </option>
+        <!-- TITLE -->
 
-      </select>
-
-      <!-- SECTION -->
-      <select v-model="editedSection" class="
-          w-full border
-          rounded-xl p-2
-        ">
-
-        <option v-for="(value, key) in SECTION_MAP" :key="key" :value="key">
-          {{ value.label }}
-        </option>
-
-      </select>
-
-      <!-- NOTES -->
-      <div class="space-y-3">
-
-        <h3 class="font-bold text-lg">
-          Notes
-        </h3>
-
-        <!-- Existing Notes -->
-        <div v-for="(_, index) in editableNotes" :key="index" class="
-            flex gap-2
-            items-start
+        <DialogTitle class="
+            text-[16px]
+            font-bold
           ">
+          Edit
+          <span class="text-blue-500">
+            {{ item.name }}
+          </span>
+        </DialogTitle>
 
-          <textarea v-model="editableNotes[index]" class="
-              flex-1
-              border rounded-xl
-              p-2
-            " />
+        <!-- NAME -->
+        <input v-model="editedName" class="
+            w-full
+            text-[14px]
+            border
+            rounded-sm
+            p-2
+          " placeholder="Name" />
 
-          <button @click="removeNote(index)" class="
-              px-3 py-2
-              rounded-xl
-              bg-red-100
-              text-red-600
+        <!-- STATUS -->
+
+        <div>
+
+          <label class="
+              text-[14px]
             ">
-            <i class="bi bi-trash3"></i>
-          </button>
+            Status
+          </label>
+
+          <SelectRoot v-model="editedStatus">
+
+            <SelectTrigger class="
+                w-full
+                border
+                rounded-sm
+                p-1
+                text-left
+              ">
+
+              <SelectValue />
+
+            </SelectTrigger>
+
+            <SelectPortal>
+
+              <SelectContent class="
+                  bg-white
+                  border
+                  rounded-sm
+                  shadow-sm
+                  z-50
+                ">
+
+                <SelectViewport >
+
+                  <SelectItem v-for="(value, key) in STATUS_MAP" :key="key" :value="key" class="
+                      p-1
+                      cursor-pointer
+                    active:bg-gray-300
+                      tranisition-all
+                      duration-200
+                      ease-in
+                      shadow-sm
+                    ">
+
+                    <SelectItemText class="text-base ">
+                      {{ value.label }}
+                    </SelectItemText>
+
+                  </SelectItem>
+
+                </SelectViewport>
+
+              </SelectContent>
+
+            </SelectPortal>
+
+          </SelectRoot>
 
         </div>
 
-        <!-- Add Note -->
-        <div class="flex gap-2">
+        <!-- SECTION -->
 
-          <input v-model="newNote" placeholder="New note..." class="
-              flex-1
-              border rounded-xl
+        <div class="space-y-1">
+
+          <label class="
+              text-[14px]
+              font-medium
+            ">
+            Section
+          </label>
+
+          <SelectRoot v-model="editedSection">
+
+            <SelectTrigger class="
+                w-full
+                text-base
+                border
+                rounded-sm
+                p-1
+                text-left
+              ">
+
+              <SelectValue />
+
+            </SelectTrigger>
+
+            <SelectPortal>
+
+              <SelectContent class="
+                  bg-white
+                  border
+                  rounded-sm
+                  shadow-sm
+                  z-50
+                ">
+
+                <SelectViewport>
+
+                  <SelectItem v-for="(value, key) in SECTION_MAP" :key="key" :value="key" class="
+                      p-2
+                      cursor-pointer
+                      active:bg-gray-200
+                      transition-all
+                      duration-200
+                      ease-in
+                      shadow-sm
+                    ">
+
+                    <SelectItemText class="text-base">
+                      {{ value.label }}
+                    </SelectItemText>
+
+                  </SelectItem>
+
+                </SelectViewport>
+
+              </SelectContent>
+
+            </SelectPortal>
+
+          </SelectRoot>
+
+        </div>
+
+        <!-- NOTES -->
+
+        <div class="space-y-1">
+
+          <h3 class="
+              text-[14px]
+              font-semibold
+            ">
+            Notes
+          </h3>
+
+          <div v-for="(_, index) in editableNotes" :key="index" class="
+              flex
+              gap-2
+            ">
+
+            <textarea v-model="editableNotes[index]" ref="textarea" class="
+                flex-1
+                border
+                rounded-sm
+                p-1
+                text-base
+                resize-none
+              " />
+
+            <button @click="removeNote(index)" class="
+                p-1
+                rounded-sm
+                bg-red-100
+                text-red-600
+              ">
+              <i class="bi bi-trash3"></i>
+            </button>
+
+          </div>
+
+          <!-- ADD NOTE -->
+
+          <div class="
+              flex
+              gap-2
+            ">
+
+            <input v-model="newNote" class="
+                flex-1
+                text-base
+                border
+                rounded-sm
+                p-1
+              " placeholder="New note..." />
+
+            <button @click="addNote" class="
+                p-1
+
+                rounded-sm
+
+                bg-blue-500
+
+                text-white
+              ">
+              <i class="bi bi-file-plus"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+
+        <div class="
+            flex
+            justify-between
+            px-5
+          ">
+
+          <button @click="emit('close')" class="
               p-2
-            " />
+              border
+              rounded-sm
+            ">
+            Cancel
+          </button>
 
-          <button @click="addNote" class="
-              px-4 py-2
-              rounded-xl
+          <button @click="saveChanges" class="
+              p-2
+              rounded-sm
               bg-blue-500
               text-white
             ">
-            <i class="bi bi-plus-square"></i>
+            Save
           </button>
 
         </div>
 
-      </div>
+      </DialogContent>
 
-      <!-- ACTIONS -->
-      <div class="flex justify-end gap-3">
+    </DialogPortal>
 
-        <button @click="emit('close')" class="
-            px-4 py-2
-            rounded-xl border
-          ">
-          <i class="bi bi-x"></i>
-        </button>
-
-        <button @click="saveChanges" class="
-            px-4 py-2
-            rounded-xl
-            bg-blue-500
-            text-white
-          ">
-          <i class="bi bi-floppy"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
+  </DialogRoot>
 
 </template>
