@@ -1,50 +1,78 @@
-import { createRouter, createWebHistory }
-  from 'vue-router'
-
-import AllCards from '../views/AllCards.vue'
-
-import CardSwiper from '../views/CardSwiper.vue'
-
-import Summary from '../views/Summary.vue'
-import Timer from '../views/Timer.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-
   history: createWebHistory(import.meta.env.BASE_URL),
-
   routes: [
-
+        // === Home 群組 ===
     {
       path: '/',
-      redirect: '/sharpApp',  
+      name: 'home',
+      component: () => import('../views/Home.vue'),
+      meta: { group: 'Home' } // 💡 貼上群組標籤
     },
 
+    // === Open 群組 ===
     {
-      path: '/swiper',
-      name: 'swiper',
-      component: CardSwiper,
+      path: '/open-check',
+      name: 'open-check',
+      component: () => import('../views/OpenCheck.vue'),
+      meta: { group: 'Open' } // 💡 貼上群組標籤
     },
 
+    // === Close 群組 ===
     {
-      path: '/all',
-      name: 'all',
-      component: AllCards,
+      path: '/close-check',
+      name: 'close-check',
+      component: () => import('../views/CloseCheck.vue'),
+      meta: { group: 'Close' }
     },
-
     {
-      path: '/summary',
-      name: 'summary',
-      component: Summary,
+      path: '/close-revenue',
+      name: 'close-revenue',
+      component: () => import('../views/Revenue.vue'),
+      meta: { group: 'Close' }
+    },
+    {
+      path: '/close-swiper',
+      name: 'close-swiper',
+      component: () => import('../views/CardSwiper.vue'), // 可以共用同一個 Vue 元件
+      meta: { group: 'Close' }
     },
 
+    // === Invencheck 群組 ===
+    {
+      path: '/inven-swiper',
+      name: 'inven-swiper',
+      component: () => import('../views/CardSwiper.vue'),
+      meta: { group: 'Inven' }
+    },
+    {
+      path: '/inven-all',
+      name: 'inven-all',
+      component: () => import('../views/AllCards.vue'),
+      meta: { group: 'Inven' }
+    },
+    {
+      path: '/inven-sum',
+      name: 'inven-sum',
+      component: () => import('../views/Summary.vue'),
+      meta: { group: 'Inven' }
+    },
+
+    // === Operation 群組 ===
+    {
+      path: '/operation-timer',
+      name: 'operation-timer',
+      component: () => import('../views/CookTimer.vue'),
+      meta: { group: 'Operation' }
+    },
         {
-      path: '/timer',
-      name: 'timer',
-      component: Timer,
+      path: '/operation-gallery',
+      name: 'operation-gallery',
+      component: () => import('../views/Gallery.vue'),
+      meta: { group: 'Operation' }
     }
-
-  ],
-
+  ]
 })
 
 export default router

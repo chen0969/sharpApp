@@ -3,7 +3,7 @@
 
 <template>
     <div class="timer">
-        <h1>Timer</h1>
-        <p>This is the timer page.</p>
+        <h1>Close Check</h1>
+        <p>This is the close check page.</p>
     </div>
 </template>

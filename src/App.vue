@@ -4,6 +4,12 @@ import icon from './assets/invencheck-icon.svg'
 import AddCardBtn from './components/AddCardBtn.vue'
 import ResetBtn from './components/ResetBtn.vue'
 import Time from './components/Time.vue'
+
+// navber
+import InteractNavbar from './components/InteractNavbar.vue'
+
+// side bar test
+import SideBar from './components/SideBar.vue'
 </script>
 <template>
   <div class="h-dvh flex flex-col overflow-hidden">
@@ -17,37 +23,12 @@ import Time from './components/Time.vue'
         items-center
         justify-around
       ">
+          <SideBar />
         <RouterLink to="/" class="p-0">
           <img class="w-8" :src="icon" alt="" />
         </RouterLink>
 
-        <RouterLink to="/swiper" class="
-          p-2 rounded-lg
-          bg-blue-500 text-white
-        ">
-          Swiper
-        </RouterLink>
-
-        <RouterLink to="/all" class="
-          p-2 rounded-lg
-          bg-gray-200
-        ">
-          All
-        </RouterLink>
-
-        <RouterLink to="/summary" class="
-          p-2 rounded-lg
-          bg-gray-200
-        ">
-          Sum
-        </RouterLink>
-
-        <RouterLink to="/timer" class="
-          p-2 rounded-lg
-          bg-gray-200
-        ">
-          Timer
-        </RouterLink>
+        <InteractNavbar />
       </nav>
       <Time class="flex justify-center items-center text-[10px]" />
     </header>
