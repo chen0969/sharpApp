@@ -55,7 +55,7 @@ function handleReset() {
         rounded-2xl
         p-6
 
-        w-full max-w-md
+        w-[90%] max-w-md
 
         space-y-5
       ">

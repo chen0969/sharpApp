@@ -346,7 +346,7 @@ const backgroundStyle = computed(() => {
             absolute
 
             top-8
-            right-6
+            right-20
 
             z-20
 
@@ -388,7 +388,7 @@ const backgroundStyle = computed(() => {
             absolute
 
             top-8
-            left-6
+            left-15
 
             z-20
 
@@ -424,6 +424,7 @@ const backgroundStyle = computed(() => {
 
         <ItemCard
           :item="currentItem"
+          variant="swiper"
         />
 
       </div>

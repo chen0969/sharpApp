@@ -20,7 +20,9 @@ import {
 } from 'radix-vue'
 
 const props = defineProps<{
-  item: Item
+  item: Item,
+  // for different page
+  variant?: 'swiper' | 'allcard'
 }>()
 
 const isEditing = ref(false)
@@ -28,6 +30,7 @@ const isEditing = ref(false)
 const cardRef = ref<HTMLElement | null>(null)
 
 const isHovered = useElementHover(cardRef)
+
 </script>
 
 <template>
@@ -37,9 +40,7 @@ const isHovered = useElementHover(cardRef)
       rounded-3xl
       border
       border-gray-500
-      p-5
-      h-70
-      w-[90%]
+      min-h-fit
       transition-all
       duration-100
       shadow-md
@@ -48,7 +49,9 @@ const isHovered = useElementHover(cardRef)
 
       isHovered
         ? 'shadow-xl -translate-y-1'
-        : ''
+        : '',
+
+      variant === 'swiper' ? 'text-stone-700 text-2xl h-100 w-[90%] p-5 rounded-3xl' : 'text-[12px] w-full h-full p-2 rounded-sm'
     ]">
 
       <!-- HEADER -->
@@ -63,7 +66,6 @@ const isHovered = useElementHover(cardRef)
         <div>
 
           <h2 class="
-            text-2xl
             font-bold
             leading-tight
           ">
@@ -118,7 +120,7 @@ const isHovered = useElementHover(cardRef)
                 active:bg-gray-200
               " @select="isEditing = true">
 
-                ✏️ Edit
+                <i class="bi bi-pencil"></i> Edit
 
               </DropdownMenuItem>
 
@@ -134,7 +136,7 @@ const isHovered = useElementHover(cardRef)
                 active:bg-red-50
               " @select="deleteItem(item.id)">
 
-                🗑 Delete
+                <i class="bi bi-trash"></i> Delete
 
               </DropdownMenuItem>
 

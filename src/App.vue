@@ -23,12 +23,12 @@ import SideBar from './components/SideBar.vue'
         items-center
         justify-around
       ">
-          <SideBar />
         <RouterLink to="/" class="p-0">
           <img class="w-8" :src="icon" alt="" />
         </RouterLink>
 
         <InteractNavbar />
+        <SideBar />
       </nav>
       <Time class="flex justify-center items-center text-[10px]" />
     </header>

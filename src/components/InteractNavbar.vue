@@ -19,7 +19,7 @@ const menuData = {
   ],
   Inven: [
     { name: 'Swiper', routeName: 'inven-swiper' },
-    { name: 'All Cards', routeName: 'inven-all' },
+    { name: 'All', routeName: 'inven-all' },
     { name: 'Summary', routeName: 'inven-sum' },
   ],
   Operation: [

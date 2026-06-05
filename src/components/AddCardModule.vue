@@ -10,7 +10,7 @@ import {
 import {
   SECTION_MAP,
   type SectionKey
-}  from '../data/sections'
+} from '../data/sections'
 
 import {
   addItem
@@ -83,13 +83,13 @@ function createItem() {
 
     <div class="
         bg-white
-        rounded-2xl
-        p-6
-        w-full max-w-lg
-        space-y-5
+        rounded-xl
+        p-3
+        w-[90%]
+        space-y-1
       ">
 
-      <h2 class="text-2xl font-bold">
+      <h2 class="text-[16px] font-bold">
         Add Item
       </h2>
 
@@ -97,16 +97,18 @@ function createItem() {
       <input v-model="name" placeholder="Item name" class="
           w-full
           border
-          rounded-xl
-          p-3
+          rounded-sm
+          p-1
+          text-[14px]
         " />
 
       <!-- STATUS -->
       <select v-model="status" class="
           w-full
           border
-          rounded-xl
-          p-3
+          rounded-sm
+          p-1
+          text-[14px]
         ">
 
         <option v-for="(value, key) in STATUS_MAP" :key="key" :value="key">
@@ -115,12 +117,13 @@ function createItem() {
 
       </select>
 
-            <!-- SECTION -->
+      <!-- SECTION -->
       <select v-model="section" class="
           w-full
           border
-          rounded-xl
-          p-3
+          rounded-sm
+          p-1
+          text-[14px]
         ">
 
         <option v-for="(value, key) in SECTION_MAP" :key="key" :value="key">
@@ -130,7 +133,7 @@ function createItem() {
       </select>
 
       <!-- NOTES -->
-      <div class="space-y-3">
+      <div class="space-y-1">
 
         <h3 class="font-bold">
           Notes
@@ -167,17 +170,19 @@ function createItem() {
           <input v-model="newNote" placeholder="New note..." class="
               flex-1
               border
-              rounded-xl
-              p-3
+              rounded-sm
+              p-1
+              text-[14px]
+              
             " />
 
           <button @click="addNote" class="
-              px-4 py-2
-              rounded-xl
+              p-1
+              rounded-sm
               bg-blue-500
               text-white
             ">
-            Add
+            <i class="bi bi-file-plus"></i>
           </button>
 
         </div>
@@ -188,16 +193,18 @@ function createItem() {
       <div class="flex justify-end gap-3">
 
         <button @click="emit('close')" class="
-            px-4 py-2
-            rounded-xl
+            p-2
+            rounded-sm
+            text-[16px]
             border
           ">
           Cancel
         </button>
 
         <button @click="createItem" class="
-            px-4 py-2
-            rounded-xl
+            p-2
+            rounded-sm
+            text-[16px]
             bg-blue-500
             text-white
           ">
