@@ -1,0 +1,1 @@
+import{M as e,R as t,k as n}from"./index-BiuyUdU9.js";import{t as r}from"./_plugin-vue_export-helper-BOai-rQB.js";var i={},a={class:`timer`};function o(r,i){return t(),e(`div`,a,[...i[0]||=[n(`h1`,null,`Revenue`,-1),n(`p`,null,`This is the revenue page.`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};

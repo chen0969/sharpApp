@@ -1,0 +1,1 @@
+import{A as e,D as t,F as n,M as r,Q as i,R as a,b as o,z as s}from"./index-BiuyUdU9.js";import{t as c}from"./ItemCard-DxFOBE6g.js";var l={class:`grid grid-cols-2 gap-2 p-1 pt-3`},u=n({__name:`AllCards`,setup(n){return(n,u)=>(a(),r(`div`,l,[(a(!0),r(t,null,s(i(o),t=>(a(),e(c,{key:t.id,item:t},null,8,[`item`]))),128))]))}});export{u as default};
