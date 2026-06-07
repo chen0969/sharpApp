@@ -135,7 +135,7 @@ function saveChanges() {
 
       <!-- Content -->
 
-      <DialogContent class="
+      <DialogContent @open-auto-focus="(event) => event.preventDefault()" class="
           fixed
           left-1/2
           top-1/2
@@ -208,7 +208,7 @@ function saveChanges() {
                   z-50
                 ">
 
-                <SelectViewport >
+                <SelectViewport>
 
                   <SelectItem v-for="(value, key) in STATUS_MAP" :key="key" :value="key" class="
                       p-1

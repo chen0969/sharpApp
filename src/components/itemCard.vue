@@ -41,6 +41,7 @@ const isHovered = useElementHover(cardRef)
       border
       border-gray-500
       min-h-fit
+      sm:h-full
       transition-all
       duration-100
       shadow-md
@@ -73,11 +74,13 @@ const isHovered = useElementHover(cardRef)
           </h2>
 
           <div class="
-            text-xs
             opacity-70
             mt-1
-          ">
+          "
+          :class="SECTION_MAP[item.section].color"
+          >
             {{ SECTION_MAP[item.section].label }}
+            <span v-html="SECTION_MAP[item.section].icon"></span>
           </div>
 
         </div>

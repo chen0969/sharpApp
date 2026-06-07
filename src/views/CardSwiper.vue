@@ -5,13 +5,39 @@ import ItemCard from '../components/ItemCard.vue'
 
 import { items, updateItemStatus } from '../composables/useItems'
 
-// ======================
-// CARD DATA
-// ======================
+import { type StatusKey } from '../data/statuses'
+import StatusBtn from '../components/StatusBtn.vue'
 
-const remainingItems = computed(() =>
-  items.value.filter(item => item.status === 'undefined')
-)
+// get current section from route params
+import { useRoute }
+  from 'vue-router'
+
+const route = useRoute()
+
+const selectedSection =
+  computed(() => {
+
+    return route.params.section
+
+  })
+
+// #region CARD DATA
+
+const remainingItems = computed(() => {
+
+  return items.value.filter(
+
+    item =>
+
+      item.status === 'undefined'
+
+      &&
+
+      item.section === selectedSection.value
+
+  )
+
+})
 
 const currentItem = computed(() =>
   remainingItems.value[0]
@@ -20,6 +46,10 @@ const currentItem = computed(() =>
 const nextItem = computed(() =>
   remainingItems.value[1]
 )
+
+// #endregion
+
+// #region CARD ACTIONS
 
 // ======================
 // DRAG
@@ -150,8 +180,27 @@ const emptyOpacity = computed(() => {
 
 })
 
-// ======================
-// CARD STYLE
+// #endregion
+
+// #region btn set status
+function setStatus(
+  status: StatusKey
+) {
+
+  const item =
+    currentItem.value
+
+  if (!item) return
+
+  updateItemStatus(
+    item.id,
+    status
+  )
+
+}
+// #endregion
+
+// #region CARD STYLE
 // ======================
 
 const cardStyle = computed(() => ({
@@ -182,11 +231,10 @@ const backgroundStyle = computed(() => {
         34,
         197,
         94,
-        ${
-          Math.min(
-            dragX.value / 300,
-            0.25
-          )
+        ${Math.min(
+        dragX.value / 300,
+        0.25
+      )
         }
       )`
 
@@ -199,14 +247,13 @@ const backgroundStyle = computed(() => {
     return {
 
       backgroundColor: `rgba(
-        239,
-        68,
-        68,
-        ${
-          Math.min(
-            -dragX.value / 300,
-            0.25
-          )
+        255,
+        240,
+        133,
+        ${Math.min(
+        -dragX.value / 300,
+        0.25
+      )
         }
       )`
 
@@ -217,12 +264,13 @@ const backgroundStyle = computed(() => {
   return {}
 
 })
+
+// #endregion
 </script>
 
 <template>
 
-  <div
-    class="
+  <div class="
       relative
 
       h-full
@@ -238,31 +286,25 @@ const backgroundStyle = computed(() => {
 
       transition-colors
       duration-200
-    "
-    :style="backgroundStyle"
-  >
+    " :style="backgroundStyle">
 
     <!-- EMPTY -->
 
     <template v-if="!currentItem">
 
-      <div
-        class="
+      <div class="
           text-center
           space-y-4
-        "
-      >
+        ">
 
         <div class="text-6xl">
-          🎉
+          <i class="bi bi-emoji-laughing"></i>
         </div>
 
-        <h2
-          class="
+        <h2 class="
             text-3xl
             font-bold
-          "
-        >
+          ">
           No More Cards
         </h2>
 
@@ -276,11 +318,7 @@ const backgroundStyle = computed(() => {
 
       <!-- NEXT CARD -->
 
-      <div
-
-        v-if="nextItem"
-
-        class="
+      <div v-if="nextItem" class="
           absolute
 
           left-1/2
@@ -294,20 +332,15 @@ const backgroundStyle = computed(() => {
           max-w-xl
 
           pointer-events-none
-        "
-      >
+        ">
 
-        <ItemCard
-          :item="nextItem"
-        />
+        <ItemCard :item="nextItem" />
 
       </div>
 
       <!-- CURRENT CARD -->
 
-      <div
-
-        class="
+      <div class="
           absolute
 
           left-1/2
@@ -322,27 +355,12 @@ const backgroundStyle = computed(() => {
           active:cursor-grabbing
 
           select-none
-        "
-
-        :style="cardStyle"
-
-        @pointerdown="onPointerDown"
-
-        @pointermove="onPointerMove"
-
-        @pointerup="onPointerUp"
-
-        @pointercancel="onPointerUp"
-
-        @pointerleave="onPointerUp"
-
-      >
+        " :style="cardStyle" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="onPointerUp"
+        @pointercancel="onPointerUp" @pointerleave="onPointerUp">
 
         <!-- GOOD -->
 
-        <div
-
-          class="
+        <div class="
             absolute
 
             top-8
@@ -368,13 +386,9 @@ const backgroundStyle = computed(() => {
             font-black
 
             pointer-events-none
-          "
-
-          :style="{
+          " :style="{
             opacity: goodOpacity
-          }"
-
-        >
+          }">
 
           GOOD
 
@@ -382,9 +396,7 @@ const backgroundStyle = computed(() => {
 
         <!-- EMPTY -->
 
-        <div
-
-          class="
+        <div class="
             absolute
 
             top-8
@@ -393,9 +405,9 @@ const backgroundStyle = computed(() => {
             z-20
 
             border-4
-            border-red-500
+            border-yellow-500
 
-            text-red-500
+            text-yellow-500
 
             bg-white/80
 
@@ -410,27 +422,28 @@ const backgroundStyle = computed(() => {
             font-black
 
             pointer-events-none
-          "
-
-          :style="{
+          " :style="{
             opacity: emptyOpacity
-          }"
-
-        >
+          }">
 
           EMPTY86
 
         </div>
 
-        <ItemCard
-          :item="currentItem"
-          variant="swiper"
-        />
+        <ItemCard :item="currentItem" variant="swiper" />
 
       </div>
 
     </template>
 
   </div>
+
+  <!-- btns -->
+
+  <StatusBtn class="fixed bottom-[25vh] left-0" :statuses="[
+    'empty86',
+    'packing',
+    'good'
+  ]" @select="setStatus" />
 
 </template>
