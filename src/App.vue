@@ -13,7 +13,7 @@ import SideBar from './components/SideBar.vue'
 </script>
 <template>
   <div class="h-dvh flex flex-col overflow-hidden">
-    <header class="sticky top-0 z-50 bg-gray-100 shadow-md h-14">
+    <header class="sticky top-0 z-50 bg-gray-100 shadow-md h-14 fullscreen-hide">
       <!-- Navigation -->
       <nav class="
         flex gap-1
@@ -38,7 +38,7 @@ import SideBar from './components/SideBar.vue'
       <RouterView id="capture-area" />
     </main>
 
-    <footer class="bg-white shadow-md h-min text-[10px] p-1">
+    <footer class="bg-white shadow-md h-min text-[10px] p-1 fullscreen-hide">
       <div class="flex justify-center">
         <img class="w-30" :src="logo" alt="" />
       </div>
