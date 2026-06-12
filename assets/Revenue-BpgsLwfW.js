@@ -1,0 +1,1 @@
+import{A as e,N as t,z as n}from"./index-DXGNBFgp.js";import{t as r}from"./_plugin-vue_export-helper-BOai-rQB.js";var i={},a={class:`timer`};function o(r,i){return n(),t(`div`,a,[...i[0]||=[e(`h1`,null,`Revenue`,-1),e(`p`,null,`This is the revenue page.`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};
