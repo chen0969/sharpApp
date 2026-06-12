@@ -2,12 +2,12 @@
 import { ref } from 'vue'
 import { useElementHover } from '@vueuse/core'
 
-import type { Item } from '../initStore/itemsList'
+import type { Item } from '../initStore/itemsList.ts'
 
-import { STATUS_MAP } from '../data/statuses'
-import { SECTION_MAP } from '../data/sections'
+import { STATUS_MAP } from '../data/statuses.ts'
+import { SECTION_MAP } from '../data/sections.ts'
 
-import { deleteItem } from '../composables/useItems'
+import { deleteItem } from '../composables/useItems.ts'
 
 import EditItemModal from './EditCard.vue'
 
