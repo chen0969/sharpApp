@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const DEFAULT_SLIDES = [
   { url: 'https://placehold.co/600x400/E63946/FFFFFF', label: 'Page 1' },
   { url: 'https://placehold.co/600x400/2A9D8F/FFFFFF', label: 'Page 2' },
-  { url: 'https://placehold.co/600x400/E9C46A/000000', label: 'Page 3' },
+  { url: 'https://placehold.co/600x400/E9C46A/000000', label: 'Page 5' },
 ]
 
 export function useGalleryImages() {
