@@ -12,24 +12,24 @@ function onFileChange(e: Event) {
 </script>
 
 <template>
-  <div class="p-4 flex flex-col gap-4">
+  <div class="flex flex-col gap-4">
     <Carousel />
 
-    <!-- 上傳按鈕 -->
-    <label class="cursor-pointer bg-blue-500 text-white rounded-md px-4 py-2 text-center">
-      ＋ 上傳圖片
-      <input type="file" accept="image/*" multiple class="hidden" @change="onFileChange" />
-    </label>
+    <section class="fullscreen-hide">
+      <!-- 上傳按鈕 -->
+      <label class="cursor-pointer bg-blue-500 text-white rounded-md px-4 py-2 text-center">
+        ＋ 上傳圖片
+        <input type="file" accept="image/*" multiple class="hidden" @change="onFileChange" />
+      </label>
 
-    <!-- 已上傳圖片列表 -->
-    <div class="grid grid-cols-3 gap-2">
-      <div v-for="(url, i) in uploadedImages" :key="i" class="relative">
-        <img :src="url" class="w-full h-24 object-cover rounded" />
-        <button
-          @click="removeImage(i)"
-          class="absolute top-1 right-1 bg-black/60 text-white rounded-full w-5 h-5 text-xs"
-        >✕</button>
+      <!-- 已上傳圖片列表 -->
+      <div class="grid grid-cols-3 gap-2">
+        <div v-for="(url, i) in uploadedImages" :key="i" class="relative">
+          <img :src="url" class="w-full h-24 object-cover rounded" />
+          <button @click="removeImage(i)"
+            class="absolute top-1 right-1 bg-black/60 text-white rounded-full w-5 h-5 text-xs">✕</button>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
