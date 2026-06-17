@@ -8,16 +8,15 @@ const getImageUrl = (name: string) => {
 }
 
 const slides = [
-  { url: 'https://placehold.co/600x400/E63946/FFFFFF', label: 'Page 1' },
-  { url: getImageUrl('1slide.jpeg'), label: 'Page 4' },
-  { url: getImageUrl('2slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('3slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('4slide.jpeg'), label: 'Page 5' },
+  { url: getImageUrl('1slide.jpeg'), label: 'Page 1' },
+  { url: getImageUrl('2slide.jpeg'), label: 'Page 2' },
+  { url: getImageUrl('3slide.jpeg'), label: 'Page 3' },
+  { url: getImageUrl('4slide.jpeg'), label: 'Page 4' },
   { url: getImageUrl('5slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('6slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('7slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('8slide.jpeg'), label: 'Page 5' },
-  { url: getImageUrl('9slide.jpeg'), label: 'Page 5' },
+  { url: getImageUrl('6slide.jpeg'), label: 'Page 6' },
+  { url: getImageUrl('7slide.jpeg'), label: 'Page 7' },
+  { url: getImageUrl('8slide.jpeg'), label: 'Page 8' },
+  { url: getImageUrl('9slide.jpeg'), label: 'Page 9' },
 ]
 
 const current = ref(0)
