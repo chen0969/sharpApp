@@ -36,17 +36,23 @@ export const SECTION_MAP = {
   },
 
   special: {
-    id: 4,
+    id: 5,
     label: 'Special',
     color: 'bg-purple-200 text-purple-700 p-1 rounded-lg border border-purple-700 w-fit',
     icon: '<i class="bi bi-cake2"></i>',
   },
 
   disposable: {
-    id: 5,
+    id: 6,
     label: 'Disposable',
     color: 'bg-lime-200 text-lime-700 p-1 rounded-lg border border-lime-700 w-fit text-[8px] sm:text-sm',
     icon: '<i class="bi bi-fork-knife p-1 rounded-lg"></i>',
+  },
+    bingsu: {
+    id: 7,
+    label: 'Bingsu',
+    color: 'bg-cyan-200 text-cyan-700 p-1 rounded-lg border border-cyan-700 w-fit text-[8px] sm:text-sm',
+    icon: '<i class="bi bi-thermometer-snow"></i>',
   }
 } as const
 
