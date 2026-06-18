@@ -10,7 +10,7 @@ export interface Item {
 }
 
 export const defaultItems: Item[] = [
-  //#region Group 1 - Beverage
+  // #region 1 Beverage
   {
     id: '1001',
     name: 'Milk',
@@ -149,7 +149,7 @@ export const defaultItems: Item[] = [
 
   //#endregion
 
-  // #region Group 2 - Craffle
+  // #region 2 Craffle
   {
     id: '2001',
     name: 'Whipped Cream',
@@ -437,110 +437,254 @@ export const defaultItems: Item[] = [
     section: 'craffle',
     notes: [],
   },
+  {
+    id: '2043',
+    name: 'Bulgogi Sauce',
+    status: 'undefined',
+    section: 'craffle',
+    notes: [],
+  },
 
   // #endregion
 
-  // #region 3 disposable 
+  // #region 3 Wholesale
   {
     id: '3001',
+    name: 'Dubai Chewy Cookie',
+    status: 'undefined',
+    section: 'wholesale',
+    notes: [],
+  },
+  {
+    id: '3002',
+    name: 'Butter Ttoek',
+    status: 'undefined',
+    section: 'wholesale',
+    notes: [],
+  },
+
+  // #endregion
+
+  // #region 4 Catering
+  {
+    id: '4001',
+    name: 'Box',
+    status: 'undefined',
+    section: 'catering',
+    notes: [],
+  },
+  {
+    id: '4002',
+    name: 'Sticker',
+    status: 'undefined',
+    section: 'catering',
+    notes: [],
+  },
+  // #endregion
+
+  // #region 5 special
+  {
+    id: '5001',
+    name: 'Whipped Cream',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5002',
+    name: 'Special Lid',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5003',
+    name: 'Yuzu Syrup',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5004',
+    name: 'Lime Syrup',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5005',
+    name: 'Mango Syrup',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5006',
+    name: 'Coffee Foam',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5007',
+    name: 'Mango Foam',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5008',
+    name: 'Apple Juice',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5009',
+    name: 'Dried Lime',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5010',
+    name: 'Lime Slice',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5011',
+    name: 'Mint',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5012',
+    name: 'Lime Zest',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5013',
+    name: 'Dry Mango',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+  {
+    id: '5014',
+    name: 'Salt',
+    status: 'undefined',
+    section: 'special',
+    notes: [],
+  },
+
+  // #endregion 
+
+  // #region 6 disposable 
+  {
+    id: '6001',
     name: '10oz Hot Cup',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3002',
+    id: '6002',
     name: '12oz Hot Cup',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3003',
+    id: '6003',
     name: '16oz Cold Cup',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3004',
+    id: '6004',
     name: 'Hot Lid',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3005',
+    id: '6005',
     name: 'Cold Lid',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3006',
+    id: '6006',
     name: 'Straw',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3007',
+    id: '6007',
     name: 'Napkin',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3008',
+    id: '6008',
     name: 'Fork & Knife',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3009',
+    id: '6009',
     name: 'Spoon',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3010',
+    id: '6010',
     name: 'Sugar Bag',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3011',
+    id: '6011',
     name: 'Splenda',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3012',
+    id: '6012',
     name: 'Sleeve',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3013',
+    id: '6013',
     name: 'Toliet Paper',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3014',
+    id: '6014',
     name: 'Toliet Hand Paper',
     status: 'undefined',
     section: 'disposable',
     notes: [],
   },
   {
-    id: '3015',
+    id: '6015',
     name: 'Starrer',
     status: 'undefined',
     section: 'disposable',
@@ -548,27 +692,77 @@ export const defaultItems: Item[] = [
   },
   // #endregion
 
-  // #region 4 special
+  // #region 7 Bingsu
   {
-    id: '4001',
-    name: '12oz Special Cup',
+    id: '7001',
+    name: 'Melon',
     status: 'undefined',
-    section: 'disposable',
+    section: 'bingsu',
     notes: [],
   },
   {
-    id: '4002',
-    name: 'Special Lid',
+    id: '7002',
+    name: 'Ice in Frige',
     status: 'undefined',
-    section: 'disposable',
+    section: 'bingsu',
     notes: [],
   },
   {
-    id: '4003',
-    name: 'Special Straw',
+    id: '7003',
+    name: 'Ice cream',
     status: 'undefined',
-    section: 'disposable',
+    section: 'bingsu',
     notes: [],
   },
-  // #endregion 
+  {
+    id: '7004',
+    name: 'Bingsu Milk',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7005',
+    name: 'Melon Syrup',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7006',
+    name: 'Strawberry Jam',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7007',
+    name: 'Mango Syrup',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7008',
+    name: 'Milk Syrup',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7009',
+    name: 'Cereal',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  {
+    id: '7010',
+    name: 'Mint',
+    status: 'undefined',
+    section: 'bingsu',
+    notes: [],
+  },
+  // #endregion
+
 ]
