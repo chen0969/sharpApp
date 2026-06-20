@@ -1,35 +1,65 @@
 <script setup lang="ts">
-import Carousel from '../components/Carousel.vue'
-import { useGalleryImages } from '../composables/useGalleryImages'
+import { onMounted, onUnmounted, ref } from 'vue'
+import Plyr from 'plyr'
+import 'plyr/dist/plyr.css'
+import slider from '../assets/video/slider.mp4'
 
-const { uploadedImages, addImage, removeImage } = useGalleryImages()
+const videoEl = ref<HTMLVideoElement | null>(null)
+const isFullscreen = ref(false)
+let player: Plyr | null = null
 
-function onFileChange(e: Event) {
-  const files = (e.target as HTMLInputElement).files
-  if (!files) return
-  Array.from(files).forEach(addImage)
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+
+async function toggleFullscreen() {
+  if (isIOS) {
+    // iOS：使用 fake fullscreen
+    isFullscreen.value = !isFullscreen.value
+    try {
+      if (isFullscreen.value) {
+        await screen.orientation.lock('landscape')
+      } else {
+        screen.orientation.unlock()
+      }
+    } catch { }
+  } else {
+    // 其他平台：讓 Plyr 自己處理
+    player?.fullscreen.toggle()
+  }
 }
+
+onMounted(() => {
+  if (videoEl.value) {
+    player = new Plyr(videoEl.value, {
+      controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+    })
+
+    if (isIOS) {
+      // 攔截 Plyr 的全螢幕按鈕，改用我們自己的邏輯
+      player.on('enterfullscreen', (e) => {
+        e.preventDefault?.()
+        toggleFullscreen()
+      })
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (isFullscreen.value) screen.orientation.unlock()
+  player?.destroy()
+})
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <Carousel />
-
-    <section class="fullscreen-hide">
-      <!-- 上傳按鈕 -->
-      <label class="cursor-pointer bg-blue-500 text-white rounded-md px-4 py-2 text-center">
-        ＋ 上傳圖片
-        <input type="file" accept="image/*" multiple class="hidden" @change="onFileChange" />
-      </label>
-
-      <!-- 已上傳圖片列表 -->
-      <div class="grid grid-cols-3 gap-2">
-        <div v-for="(url, i) in uploadedImages" :key="i" class="relative">
-          <img :src="url" class="w-full h-24 object-cover rounded" />
-          <button @click="removeImage(i)"
-            class="absolute top-1 right-1 bg-black/60 text-white rounded-full w-5 h-5 text-xs">✕</button>
-        </div>
-      </div>
-    </section>
+  <div class="bg-black" :class="isFullscreen
+    ? 'fixed inset-0 z-50 w-screen h-screen'
+    : 'w-full aspect-video'
+    ">
+    <video ref="videoEl" playsinline controls class="w-full h-full">
+      <source :src="slider" type="video/mp4" />
+    </video>
+    <button v-if="isIOS" @click="toggleFullscreen"
+      class="absolute bottom-4 right-4 z-10 text-white bg-black/50 p-2 rounded">
+      {{ isFullscreen ? '✕' : '⛶' }}
+    </button>
   </div>
 </template>
