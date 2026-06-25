@@ -1,6 +1,8 @@
 # Welcom to Sharpfle InvenCheck APP!!! 
 ## this APP helps you to check the inventory of your Cafe!
 
+# <font color="yellow">V3.1-beta focus on opening</font>
+
 ### A note to myself
 [how to update web online]
 

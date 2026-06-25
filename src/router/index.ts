@@ -19,6 +19,12 @@ const router = createRouter({
       component: () => import('../views/OpenCheck.vue'),
       meta: { group: 'Open' } // 💡 貼上群組標籤
     },
+    {
+      path: '/open-check-bar',
+      name: 'open-check-bar',
+      component: () => import('../components/opening/Bar.vue'),
+      meta: { group: 'Open' } // 💡 貼上群組標籤
+    },
 
     // #endregion
 
