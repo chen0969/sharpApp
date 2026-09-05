@@ -1,10 +1,24 @@
 # Welcom to Sharpfle InvenCheck APP!!! 
 ## this APP helps you to check the inventory of your Cafe!
 
-# <font color="yellow">V3.1-beta focus on opening</font>
+<font color="lightgreen">
+
+# Next step:
+
+1. make a user manual
+2. define the "good" "packing" "empty"
+3. add container icon to inven cards
+4. i think we should delete the gallery swiper function
+5. maybe switch to regular photo list function?
+6. finish the opening map
+
+</font>
+
+
+# <font color="yellow">V4.1-function switching</font>
 
 ### A note to myself
-[how to update web online]
+[ how to update web online ]
 
 1. npm run build
 2. git add .
