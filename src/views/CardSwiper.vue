@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import ItemCard from '../components/ItemCard.vue'
+import ItemCard from '../components/itemCard.vue'
 
 import { items, updateItemStatus } from '../composables/useItems'
 

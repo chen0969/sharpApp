@@ -7,6 +7,7 @@ export interface Item {
   status: StatusKey
   section: SectionKey
   notes: string[]
+  invenInfo: string
 }
 
 export const defaultItems: Item[] = [
@@ -16,7 +17,8 @@ export const defaultItems: Item[] = [
     name: 'Milk',
     status: 'undefined',
     section: 'Beverage',
-    notes: ['Sample of note'],
+    notes: [],
+    invenInfo: '6 white bags',
   },
 
   {
@@ -25,6 +27,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '5 oat boxes',
   },
 
   {
@@ -33,14 +36,25 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '6 bottles',
   },
 
   {
     id: '1004',
-    name: 'Coffee Bean',
+    name: 'Coffee Bean_Brazil',
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '1 silver bag',
+  },
+  
+  {
+    id: '10041',
+    name: 'Coffee Bean_Colombia',
+    status: 'undefined',
+    section: 'Beverage',
+    notes: [],
+    invenInfo: '1 silver bag',
   },
 
   {
@@ -49,6 +63,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '1 black bag',
   },
 
   {
@@ -57,6 +72,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: 'tall container and 2 squeez bottles',
   },
 
   {
@@ -65,6 +81,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-green-800 font-bold">Green</em> box and 2 squeez bottles',
   },
 
   {
@@ -73,6 +90,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
 
   {
@@ -81,6 +99,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
 
   {
@@ -89,6 +108,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
 
   {
@@ -97,6 +117,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '1 large squeez bottle',
   },
 
   {
@@ -105,6 +126,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
 
   {
@@ -113,6 +135,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '3 short containers',
   },
 
   {
@@ -121,6 +144,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '2 tall containers',
   },
 
   {
@@ -129,6 +153,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '1 short container',
   },
 
   {
@@ -137,6 +162,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '1 short container',
   },
 
   {
@@ -145,6 +171,16 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'Beverage',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 kettles',
+  },
+
+    {
+    id: '10171',
+    name: 'Korean Chai-oat',
+    status: 'undefined',
+    section: 'Beverage',
+    notes: [],
+    invenInfo: '2 kettles',
   },
 
   //#endregion
@@ -156,6 +192,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pan',
   },
   {
     id: '2002',
@@ -163,6 +200,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pan',
   },
   {
     id: '2003',
@@ -170,6 +208,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pan',
   },
   {
     id: '2004',
@@ -177,6 +216,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pan',
   },
   {
     id: '2005',
@@ -184,6 +224,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '3 bags',
   },
   {
     id: '2006',
@@ -191,13 +232,15 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '3 bags',
   },
   {
     id: '2007',
-    name: 'Parmasan',
+    name: 'Pecorino Cheese',
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 short container',
   },
   {
     id: '2008',
@@ -205,6 +248,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 3pans',
   },
   {
     id: '2009',
@@ -212,6 +256,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 3pans',
   },
   {
     id: '2010',
@@ -219,6 +264,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 6pan',
   },
   {
     id: '2011',
@@ -226,6 +272,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '5 bananas',
   },
   {
     id: '2012',
@@ -233,6 +280,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 tall container',
   },
   {
     id: '2013',
@@ -240,6 +288,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 tall container',
   },
   {
     id: '2014',
@@ -247,6 +296,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 tall container',
   },
   {
     id: '2015',
@@ -254,6 +304,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 tall container',
   },
   {
     id: '2016',
@@ -261,6 +312,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 half-pan',
   },
   {
     id: '2017',
@@ -268,6 +320,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2018',
@@ -275,6 +328,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2019',
@@ -282,6 +336,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan',
   },
   {
     id: '2020',
@@ -289,6 +344,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2021',
@@ -296,6 +352,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2022',
@@ -303,6 +360,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2023',
@@ -310,6 +368,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2024',
@@ -317,6 +376,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 steel mini-pan and 1 short container',
   },
   {
     id: '2025',
@@ -324,6 +384,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 bottle',
   },
   {
     id: '2026',
@@ -331,6 +392,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 short container',
   },
   {
     id: '2027',
@@ -338,6 +400,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 short container',
   },
   {
     id: '2028',
@@ -345,6 +408,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 <em class="text-red-800 font-bold">Red</em> box',
   },
   {
     id: '2029',
@@ -352,6 +416,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pans',
   },
   {
     id: '2031',
@@ -359,6 +424,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 6pans',
   },
   {
     id: '2032',
@@ -366,6 +432,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 short container',
   },
   {
     id: '2033',
@@ -373,6 +440,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
   {
     id: '2034',
@@ -380,13 +448,15 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 squeez bottle',
   },
   {
     id: '2035',
-    name: 'Fire Chicken Sauce',
+    name: 'KFC Sauce',
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
   {
     id: '2036',
@@ -394,6 +464,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
   {
     id: '2037',
@@ -401,6 +472,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 bag',
   },
   {
     id: '2038',
@@ -408,6 +480,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
   {
     id: '2039',
@@ -415,6 +488,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '2 squeez bottles',
   },
   {
     id: '2040',
@@ -422,6 +496,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '1 tall container and 2 squeez bottles',
   },
   {
     id: '2041',
@@ -429,6 +504,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '3 red squeez bottles',
   },
   {
     id: '2042',
@@ -436,6 +512,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
   {
     id: '2043',
@@ -443,6 +520,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'craffle',
     notes: [],
+    invenInfo: '<em class="text-red-800 font-bold">Red</em> box and 2 squeez bottles',
   },
 
   // #endregion
@@ -454,6 +532,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'wholesale',
     notes: [],
+    invenInfo: '6 to-go in front refirgerator, 10 in 3 pan',
   },
   {
     id: '3002',
@@ -461,6 +540,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'wholesale',
     notes: [],
+    invenInfo: 'Double-check per day',
   },
 
   // #endregion
@@ -472,6 +552,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'catering',
     notes: [],
+    invenInfo: 'N/A',
   },
   {
     id: '4002',
@@ -479,72 +560,27 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'catering',
     notes: [],
+    invenInfo: 'N/A',
   },
   // #endregion
 
   // #region 5 special
-  {
-    id: '5001',
-    name: 'Whipped Cream',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
   {
     id: '5002',
     name: 'Special Lid',
     status: 'undefined',
     section: 'special',
     notes: [],
+    invenInfo: '1 column',
   },
-  {
-    id: '5003',
-    name: 'Yuzu Syrup',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
+
   {
     id: '5004',
     name: 'Lime Syrup',
     status: 'undefined',
     section: 'special',
     notes: [],
-  },
-  {
-    id: '5005',
-    name: 'Mango Syrup',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
-  {
-    id: '5006',
-    name: 'Coffee Foam',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
-  {
-    id: '5007',
-    name: 'Mango Foam',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
-  {
-    id: '5008',
-    name: 'Apple Juice',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
-  {
-    id: '5009',
-    name: 'Dried Lime',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
+    invenInfo: '<em class="text-green-800 font-bold">Green</em> box and 1 squeez bottle',
   },
   {
     id: '5010',
@@ -552,6 +588,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'special',
     notes: [],
+    invenInfo: '1 9pan',
   },
   {
     id: '5011',
@@ -559,27 +596,15 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'special',
     notes: [],
-  },
-  {
-    id: '5012',
-    name: 'Lime Zest',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
-  },
-  {
-    id: '5013',
-    name: 'Dry Mango',
-    status: 'undefined',
-    section: 'special',
-    notes: [],
+    invenInfo: '1 <em class="text-red-800 font-bold">Red</em> box',
   },
   {
     id: '5014',
-    name: 'Salt',
+    name: 'Lime form',
     status: 'undefined',
     section: 'special',
     notes: [],
+    invenInfo: '1 steel bottle',
   },
 
   // #endregion 
@@ -591,6 +616,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 column and 1 backup',
   },
   {
     id: '6002',
@@ -598,6 +624,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 column and 1 backup',
   },
   {
     id: '6003',
@@ -605,6 +632,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '2 columns and 2 backups',
   },
   {
     id: '6004',
@@ -612,6 +640,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 column and 1 backup',
   },
   {
     id: '6005',
@@ -619,6 +648,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '2 columns and 2 backups',
   },
   {
     id: '6006',
@@ -626,6 +656,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 9 pan and 1 paper box',
   },
   {
     id: '6007',
@@ -633,6 +664,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 bag for backup',
   },
   {
     id: '6008',
@@ -640,6 +672,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 9 pan and 1 box',
   },
   {
     id: '6009',
@@ -647,6 +680,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 9 pan and 1 box',
   },
   {
     id: '6010',
@@ -654,6 +688,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 small bowl and 1 box',
   },
   {
     id: '6011',
@@ -661,6 +696,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 small bowl and 1 box',
   },
   {
     id: '6012',
@@ -668,6 +704,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 column',
   },
   {
     id: '6013',
@@ -675,6 +712,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '2 rolls',
   },
   {
     id: '6014',
@@ -682,6 +720,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 roll',
   },
   {
     id: '6015',
@@ -689,6 +728,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'disposable',
     notes: [],
+    invenInfo: '1 9pan',
   },
   // #endregion
 
@@ -699,6 +739,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '3 melons',
   },
   {
     id: '7002',
@@ -706,6 +747,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '2 <em class="text-red-800 font-bold">Red</em> boxes',
   },
   {
     id: '7003',
@@ -713,6 +755,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 tank',
   },
   {
     id: '7004',
@@ -720,6 +763,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 squeeze bottle',
   },
   {
     id: '7005',
@@ -727,6 +771,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 squeeze bottle',
   },
   {
     id: '7006',
@@ -734,6 +779,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 squeeze bottle',
   },
   {
     id: '7007',
@@ -741,6 +787,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 squeeze bottle',
   },
   {
     id: '7008',
@@ -748,6 +795,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 squeeze bottle',
   },
   {
     id: '7009',
@@ -755,6 +803,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 <em class="text-green-800 font-bold">Green</em> box',
   },
   {
     id: '7010',
@@ -762,6 +811,7 @@ export const defaultItems: Item[] = [
     status: 'undefined',
     section: 'bingsu',
     notes: [],
+    invenInfo: '1 <em class="text-red-800 font-bold">Red</em> box',
   },
   // #endregion
 
