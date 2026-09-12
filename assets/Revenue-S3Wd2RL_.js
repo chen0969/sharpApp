@@ -1,1 +1,0 @@
-import{J as e,R as t,V as n}from"./index-CM4PL1_J.js";import{t as r}from"./_plugin-vue_export-helper-B67ILkmu.js";var i={},a={class:`timer`};function o(r,i){return e(),n(`div`,a,[...i[0]||=[t(`h1`,null,`Revenue`,-1),t(`p`,null,`This is the revenue page.`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};

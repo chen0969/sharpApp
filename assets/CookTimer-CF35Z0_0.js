@@ -1,0 +1,1 @@
+import{A as e,B as t,N as n}from"./index-D8rdL8nq.js";import{t as r}from"./_plugin-vue_export-helper-CSBScHBl.js";var i={},a={class:`timer`};function o(r,i){return t(),n(`div`,a,[...i[0]||=[e(`h1`,null,`Timer for cook`,-1),e(`p`,null,`This is the timer page.`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};
