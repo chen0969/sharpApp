@@ -6,7 +6,6 @@ import type { Item } from '../initStore/itemsList.ts'
 
 import { STATUS_MAP } from '../data/statuses.ts'
 import { SECTION_MAP } from '../data/sections.ts'
-
 import { deleteItem } from '../composables/useItems.ts'
 
 import EditItemModal from './EditCard.vue'
@@ -36,6 +35,7 @@ const isHovered = useElementHover(cardRef)
 <template>
 
   <section class="flex justify-center items-center w-full h-full" >
+    
     <div ref="cardRef" class="
       rounded-3xl
       border
@@ -63,16 +63,13 @@ const isHovered = useElementHover(cardRef)
         items-start
         mb-4
       ">
-
-        <div>
-
+        <div class="flex flex-col gap-1">
           <h2 class="
             font-bold
             leading-tight
           ">
             {{ item.name }}
           </h2>
-
           <div class="
             opacity-70
             mt-1
@@ -82,9 +79,8 @@ const isHovered = useElementHover(cardRef)
             {{ SECTION_MAP[item.section].label }}
             <span v-html="SECTION_MAP[item.section].icon"></span>
           </div>
-
+          <p class="text-sm opacity-75 text-stone-500"><b>Should be: </b><span v-html="item.invenInfo"></span></p>
         </div>
-
         <!-- RADIX MENU -->
 
         <DropdownMenuRoot>

@@ -5,5 +5,5 @@ import Carousel from '../components/Carousel.vue'
 <template>
 
 <Carousel />
-
+<h1>this gallery is about to be deleted</h1>
 </template>
