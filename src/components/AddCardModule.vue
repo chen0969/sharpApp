@@ -33,6 +33,8 @@ const section = ref<SectionKey>('uncategorized')
 
 const newNote = ref('')
 
+const newInven = ref('')
+
 function addNote() {
 
   if (!newNote.value.trim()) return
@@ -65,6 +67,8 @@ function createItem() {
     notes: notes.value,
 
     section: section.value,
+
+    invenInfo: newInven.value
 
   })
 

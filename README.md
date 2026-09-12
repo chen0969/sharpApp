@@ -5,17 +5,15 @@
 
 # Next step:
 
-1. make a user manual
-2. define the "good" "packing" "empty"
-3. add container icon to inven cards
-4. i think we should delete the gallery swiper function
-5. maybe switch to regular photo list function?
-6. finish the opening map
+1. i think we should delete the gallery swiper function, maybe switch to regular photo list function?
+2. finish the opening map, some functions need to be remade
+
 
 </font>
 
 
-# <font color="yellow">V4.1-function switching</font>
+# <font color="yellow">New updates! V4.2.1 </font>
+Details: add the "Should be" function to Inventory section, so users know the definition of "Good" and "Empty"
 
 ### A note to myself
 [ how to update web online ]
